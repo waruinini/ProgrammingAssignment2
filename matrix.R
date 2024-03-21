@@ -1,4 +1,7 @@
-makeCacheMatrix <- function(x=matrix()){
+
+library(MASS)  #it is used to calculate inverse for non squared as well as square matrices
+
+makeCacheMatrix <- function(x=matrix()){       #set x as an argument of the function
   inv <- NULL
   set <- function(y){
     x <<- y
@@ -19,7 +22,7 @@ cacheSolve <- function(x,...){
     return(inverse)
   }
   data <- x$get()
-  inverse <- inverse(data, ...)
+  inverse <- solve(data, ...)
   x$setinverse(inverse)
   return(inverse)
 }
